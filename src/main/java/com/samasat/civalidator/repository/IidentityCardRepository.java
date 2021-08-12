@@ -10,4 +10,5 @@ import java.util.Optional;
 public interface IidentityCardRepository extends JpaRepository<IdentityCard, Long> {
     public Optional<IdentityCard> findById(Long id);
     public IdentityCard findByFullName(String fullName);
+    public IdentityCard findByNumCi (String numCi);
 }

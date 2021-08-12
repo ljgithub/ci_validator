@@ -1,6 +1,8 @@
 package com.samasat.civalidator.controller;
 
 import com.samasat.civalidator.entity.IdentityCard;
+import com.samasat.civalidator.service.IdentityService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping
 public class IdentityCardController {
+
+    @Autowired
+    IdentityService identityService;
 
     @GetMapping("/validate/{numCI}")
     public ResponseEntity<IdentityCard> validateCI(@PathVariable String numCI){
@@ -52,4 +57,12 @@ public class IdentityCardController {
             return ResponseEntity.status(HttpStatus.OK).build();
         }
     }
+
+    @GetMapping("/find/{numCi}")
+    public ResponseEntity<IdentityCard> findById(@PathVariable String numCi){
+        IdentityCard identityCard = identityService.findByNumCi(numCi);
+        return ResponseEntity.ok(identityCard);
+    }
+
+
 }

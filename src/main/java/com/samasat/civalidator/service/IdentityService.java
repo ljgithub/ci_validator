@@ -25,4 +25,9 @@ public class IdentityService implements IidentityCardService {
     public IdentityCard findByFullName(String fullName) {
         return identityCardRepository.findByFullName(fullName);
     }
+
+    @Override
+    public IdentityCard findByNumCi(String numCi) {
+        return identityCardRepository.findByNumCi(numCi);
+    }
 }
